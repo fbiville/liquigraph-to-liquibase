@@ -53,7 +53,7 @@ Then, assuming you are currently in the root folder of this project, run:
 ```shell
 cli=$(pwd)
 cd $(mktemp -d)
-git clone https://github.com/liquibase/liquigraph/ --branch issue_446
+git clone https://github.com/liquibase/liquigraph/
 mvn --quiet --file liquigraph --also-make --projects liquigraph-cli package -DskipTests
 unzip -o liquigraph/liquigraph-cli/target/liquigraph-cli-bin.zip -d "${cli}"
 cd -

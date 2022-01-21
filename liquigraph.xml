@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<changelog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="https://www.liquigraph.org/schema/1.0/liquigraph.xsd">
+    <changeset id="sentence-initialization" author="florent-biville" contexts="foo,bar" run-on-change="true">
+        <query>CREATE (n:Sentence {text:"Hello monde!"})</query>
+    </changeset>
+    <changeset id="sentence-correction" author="florent-biville" contexts="bar,baz" run-always="true">
+		<precondition if-not-met="FAIL"><!-- spoiler alert: precondition will be met -->
+			<or>
+				<query>RETURN false AS result</query>
+				<and>
+					<query>RETURN true AS result</query>
+					<query>RETURN true AS result</query>
+				</and>
+			</or>
+   		</precondition>
+        <query>MATCH (n:Sentence {text:"Hello monde!"}) SET n.text="Hello world!"</query>
+    </changeset>
+</changelog>
